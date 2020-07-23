@@ -1,0 +1,39 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+  <h1>Hey there! Welcome to the movie recommender :)</h1>
+
+  <form action="/recommendation" method="get">
+
+    <p>Please Select your Preferred Genre.</p>
+
+    <select name="genre">
+    <option value="Drama">Drama</option>
+    <option value="Action">Action</option>
+    <option value="Horror">Horror</option>
+    <option value="Sci-Fi">Sci-Fi</option>
+    </select>
+
+    <p>Provide Ratings for some Movies</p>
+    Grumpier Old Men (1995):
+    <input type="text" name="Grumpier Old Men (1995)" placeholder="0.0 - 5.0">
+    <br>
+    <br>
+    Jumanji (1995):
+    <input type="text" name="Jumanji (1995)" placeholder="0.0 - 5.0">
+    <br>
+    <br>
+    Waiting to Exhale (1995):
+    <input type="text" name="Waiting to Exhale (1995)" placeholder="0.0 - 5.0">
+    <br>
+    <br>
+    <input type="submit">
+
+  </form>
+
+
+  <!-- <a href="/recommendation">Click here to see some awesome movies!</a> -->
+
+
+{% endblock %}
