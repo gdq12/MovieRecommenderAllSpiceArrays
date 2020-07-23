@@ -3,7 +3,7 @@ from recommender2 import sql_data, user_input_vector, recommender_build, custom_
 
 app = Flask(__name__)
 
-@app.route('/index')
+@app.route('/')
 def index():
     return render_template('index.html')
 
@@ -12,12 +12,15 @@ def recommend():
     num_movies, movieId=sql_data('combo_input.csv')
 
     user_flask = dict(request.args)
+    model_choice=dict(list(user_flask.items())[:1])
+    time_block=dict(list(user_flask.items())[1:2])
+    user_flask1=dict(list(user_flask.items())[2:])
 
-    new_user_vector, movie_time_index=user_input_vector(user_flask, num_movies, movieId, 'movie_title_index.json')
+    new_user_vector, movie_title_index=user_input_vector(user_flask1, num_movies, movieId, 'movie_title_index.json')
 
-    recommendations=recommender_build(model, new_user_vector, user_flask, 'movie_time_index.json', movie_title_index, 'movie_genre_index.json', 'movie_tag_index.json', movieId)
+    recommendations=recommender_build(list(model_choice.items())[0][1], new_user_vector, user_flask1, 'movie_time_index.json', movie_title_index, 'movie_genre_index.json', 'movie_tag_index.json', movieId)
 
-    movies=custom_recommendation(recommendations, 'time_block', 'cant sleep')
+    movies=custom_recommendation(recommendations, list(time_block.items())[0][0], list(time_block.items())[0][1])
 
     return render_template('recommendation.html', movies=movies)
 

@@ -6,16 +6,27 @@
 
   <form action="/recommendation" method="get">
 
-    <p>Please Select your Preferred Genre.</p>
+    <p>Please select what you'd like your recommendations to be based on:</p>
 
-    <select name="genre">
-    <option value="Drama">Drama</option>
-    <option value="Action">Action</option>
-    <option value="Horror">Horror</option>
-    <option value="Sci-Fi">Sci-Fi</option>
+    <select name="model">
+    <option value="bottom75_users_neutral">Our previous top 25% active users</option>
+    <option value="top25_movies">Disregrd our top 25% rated films</option>
+    <option value="combo">Make it interesting with a mix of both</option>
     </select>
 
-    <p>Provide Ratings for some Movies</p>
+    <p>Please Select time period you'd like recommendations for you.</p>
+
+    <select name="time_block">
+    <option value="can't sleep">can't sleep(00:00-04:00)</option>
+    <option value="early commuter">early commuter(04:00-07:00)</option>
+    <option value="talk show">talk show(07:00-11:00)</option>
+    <option value="kiddy nap">kiddy nap(11:00-15:00)</option>
+    <option value="afterschool">afterschool(15:00-18:00)</option>
+    <option value="tv dinner">tv dinner(18:00-21:00)</option>
+    <option value="late night">late night(21:00-24:00)</option>
+    </select>
+
+    <p>Please provide ratings for the following movies 0.0-5.0</p>
     Grumpier Old Men (1995):
     <input type="text" name="Grumpier Old Men (1995)" placeholder="0.0 - 5.0">
     <br>
@@ -31,9 +42,5 @@
     <input type="submit">
 
   </form>
-
-
-  <!-- <a href="/recommendation">Click here to see some awesome movies!</a> -->
-
 
 {% endblock %}
