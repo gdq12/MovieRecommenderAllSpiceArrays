@@ -68,3 +68,7 @@ def custom_recommendation(recommendations, search_filter, search_tag, num=5):
     if search_filter == 'genre':
         recs=np.array(recommendations[recommendations['genre']==search_tag].sort_values('weight', ascending=True)['movieId'][:num])
     return recs
+
+# if __name__ == '__main__':
+#     for i in range(5):
+#         print(i)
