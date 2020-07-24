@@ -9,7 +9,7 @@
     <p>Please select what you'd like your recommendations to be based on:</p>
 
     <select name="model">
-    <option value="bottom75_users_neutral">Our previous top 25% active users</option>
+    <option value="bottom75_user_neutral">Our previous top 25% active users</option>
     <option value="top25_movies">Disregrd our top 25% rated films</option>
     <option value="combo">Make it interesting with a mix of both</option>
     </select>
@@ -26,17 +26,20 @@
     <option value="late night">late night(21:00-24:00)</option>
     </select>
 
+    <p>How many recommendations would you like?</p>
+    <input type="text" name="num" placeholder="3-15">
+
     <p>Please provide ratings for the following movies 0.0-5.0</p>
-    Grumpier Old Men (1995):
-    <input type="text" name="Grumpier Old Men (1995)" placeholder="0.0 - 5.0">
+    {{choices[0]}}:
+    <input type="text" name="{{choices[0]}}" placeholder="0.0 - 5.0">
     <br>
     <br>
-    Jumanji (1995):
-    <input type="text" name="Jumanji (1995)" placeholder="0.0 - 5.0">
+    {{choices[1]}}:
+    <input type="text" name="{{choices[1]}}" placeholder="0.0 - 5.0">
     <br>
     <br>
-    Waiting to Exhale (1995):
-    <input type="text" name="Waiting to Exhale (1995)" placeholder="0.0 - 5.0">
+    {{choices[2]}}:
+    <input type="text" name="{{choices[2]}}" placeholder="0.0 - 5.0">
     <br>
     <br>
     <input type="submit">
