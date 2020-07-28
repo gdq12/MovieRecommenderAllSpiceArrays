@@ -1,49 +1,72 @@
-{% extends "_base.html" %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Movie Recommender 3000</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    h1 {
+      color: #FFFFFF;
+      text-align:center;
+    }
+    p {
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+<body>
+  <h1>Movie Recommender 3000</h1>
 
-{% block content %}
+  <div class="wrapper">
+    <div class="contact-form">
 
-  <h1>Hey there! Welcome to the movie recommender :)</h1>
+      <p>Please select what you'd like your recommendations to be based on:</p>
+      <select name="model">
+      <option value="bottom75_user_neutral">Our previous top 25% active users</option>
+      <option value="top25_movies">Disregrd our top 25% rated films</option>
+      <option value="combo">Make it interesting with a mix of both</option>
+      </select>
+      <br>
+      <br>
 
-  <form action="/recommendation" method="get">
+      <p>Please Select time period you'd like recommendations for you.</p>
+      <select name="time_block">
+      <option value="can't sleep">can't sleep(00:00-04:00)</option>
+      <option value="early commuter">early commuter(04:00-07:00)</option>
+      <option value="talk show">talk show(07:00-11:00)</option>
+      <option value="kiddy nap">kiddy nap(11:00-15:00)</option>
+      <option value="afterschool">afterschool(15:00-18:00)</option>
+      <option value="tv dinner">tv dinner(18:00-21:00)</option>
+      <option value="late night">late night(21:00-24:00)</option>
+      </select>
+      <br>
+      <br>
 
-    <p>Please select what you'd like your recommendations to be based on:</p>
+      <p>How many recommendations would you like?</p>
+      <input type="text" name="num" placeholder="3-15">
+      <br>
+      <br>
 
-    <select name="model">
-    <option value="bottom75_user_neutral">Our previous top 25% active users</option>
-    <option value="top25_movies">Disregrd our top 25% rated films</option>
-    <option value="combo">Make it interesting with a mix of both</option>
-    </select>
+      <p>Please provide ratings for the following movies 0.0-5.0</p>
+      {{choices[0]}}:
+      <input type="text" name="{{choices[0]}}" placeholder="0.0 - 5.0">
+      <br>
+      <br>
 
-    <p>Please Select time period you'd like recommendations for you.</p>
+      {{choices[1]}}:
+      <input type="text" name="{{choices[1]}}" placeholder="0.0 - 5.0">
+      <br>
+      <br>
 
-    <select name="time_block">
-    <option value="can't sleep">can't sleep(00:00-04:00)</option>
-    <option value="early commuter">early commuter(04:00-07:00)</option>
-    <option value="talk show">talk show(07:00-11:00)</option>
-    <option value="kiddy nap">kiddy nap(11:00-15:00)</option>
-    <option value="afterschool">afterschool(15:00-18:00)</option>
-    <option value="tv dinner">tv dinner(18:00-21:00)</option>
-    <option value="late night">late night(21:00-24:00)</option>
-    </select>
+      {{choices[2]}}:
+      <input type="text" name="{{choices[2]}}" placeholder="0.0 - 5.0">
+      <br>
+      <br>
 
-    <p>How many recommendations would you like?</p>
-    <input type="text" name="num" placeholder="3-15">
+      <input type="submit">
 
-    <p>Please provide ratings for the following movies 0.0-5.0</p>
-    {{choices[0]}}:
-    <input type="text" name="{{choices[0]}}" placeholder="0.0 - 5.0">
-    <br>
-    <br>
-    {{choices[1]}}:
-    <input type="text" name="{{choices[1]}}" placeholder="0.0 - 5.0">
-    <br>
-    <br>
-    {{choices[2]}}:
-    <input type="text" name="{{choices[2]}}" placeholder="0.0 - 5.0">
-    <br>
-    <br>
-    <input type="submit">
+    </div>
 
-  </form>
 
-{% endblock %}
+</body>
+</html>
